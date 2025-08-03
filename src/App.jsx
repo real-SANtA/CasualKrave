@@ -27,10 +27,15 @@ function App() {
 
   // New state for the "Back to Top" button visibility
   const [isBackToTopVisible, setIsBackToTopVisible] = useState(false);
+  
+  // New state for the hamburger menu color on the footer
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
 
-  // Ref to measure the hero section's height
+
+  // Refs to measure section heights and positions
   const heroRef = useRef(null);
   const [heroHeight, setHeroHeight] = useState(0);
+  const footerRef = useRef(null); // Ref for the Footer component
 
   // Effect to get the hero section height on page load and resize
   useEffect(() => {
@@ -54,6 +59,16 @@ function App() {
       
       // "Back to Top" button visibility logic
       setIsBackToTopVisible(currentScrollY > 200);
+
+      // New: Check if the user is in the footer section
+      if (footerRef.current) {
+        const footerPosition = footerRef.current.offsetTop;
+        if (currentScrollY + window.innerHeight > footerPosition + 50) { // +50 for a little buffer
+          setIsFooterVisible(true);
+        } else {
+          setIsFooterVisible(false);
+        }
+      }
 
       // Mobile scroll behavior
       if (window.innerWidth < 768) {
@@ -81,7 +96,7 @@ function App() {
             scrollTimeoutRef.current = setTimeout(() => {
               setIsMobileNavHidden(false);
               scrollTimeoutRef.current = null;
-            }, 1280);
+            }, 1280); // Changed delay to 1.28 seconds
           }
         }
         lastScrollY.current = currentScrollY;
@@ -143,11 +158,12 @@ function App() {
         setIsAboutUsVisible={setIsAboutUsVisible}
         isScrolled={isScrolled}
         isMobileNavHidden={isMobileNavHidden} // Pass the new state
+        isFooterVisible={isFooterVisible} // Pass the new state
       />
       {/* The main content area renders the selected page. */}
       {renderPage()}
       {/* The Footer is also persistent. */}
-      <Footer />
+      <Footer ref={footerRef} />
       {/* The Modal is rendered but hidden by default. Its content is now the StaffDirectory component. */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         {/* Pass the onClose function to the StaffDirectory component so it can handle closing itself if needed */}

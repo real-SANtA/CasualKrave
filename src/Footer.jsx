@@ -1,12 +1,15 @@
+// Footer.jsx
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // The Footer component provides the footer content with links and contact information.
-export default function Footer() {
+const Footer = React.forwardRef((props, ref) => {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer ref={ref} className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="col-span-1">
-          <h3 className="text-xl font-bold mb-4 text-blue-400">CasualKrave</h3>
+          {/* Updated logo color to white */}
+          <h3 className="text-xl font-bold mb-4 text-white">CasualKrave</h3>
           <p className="text-gray-400 text-sm">Where Serenity Meets Modern Life.</p>
         </div>
         <div className="col-span-1">
@@ -42,21 +45,24 @@ export default function Footer() {
         </div>
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-700 pt-8 text-center">
-        {/* Updated developer credit with new design */}
+        {/* Updated developer credit with new design and animation */}
         <p className="mb-2 text-white">
           <span>Built by </span>
-          <a
-            href="https://github.com/real-SANtA" // You can change this to your actual GitHub profile
-            className="font-black uppercase tracking-widest inline-block transform hover:scale-110 transition-all duration-300 animate-pulse
-                       bg-gradient-to-r from-red-400 via-red-500 to-red-600 text-transparent bg-clip-text text-[22px]"
+          <motion.a
+            href="https://github.com/real-SANtA"
+            className="font-black uppercase tracking-widest inline-block text-[22px] text-red-500"
             target="_blank"
             rel="noopener noreferrer"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ delay: 5, duration: 0.5, repeat: Infinity, repeatType: "loop" }}
           >
-            SANtA
-          </a>
+            SANta
+          </motion.a>
         </p>
         <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} CasualKrave Massage. All rights reserved.</p>
       </div>
     </footer>
   );
-}
+});
+
+export default Footer;

@@ -2,7 +2,7 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 
-export default function Header({ currentPage, onPageChange, isMenuOpen, setIsMenuOpen, setIsModalOpen, setIsAboutUsVisible, isScrolled, isMobileNavHidden }) {
+export default function Header({ currentPage, onPageChange, isMenuOpen, setIsMenuOpen, setIsModalOpen, setIsAboutUsVisible, isScrolled, isMobileNavHidden, isFooterVisible }) {
   const isLinkActive = (page) => currentPage === page;
 
   const handleStaffButtonClick = () => {
@@ -16,7 +16,8 @@ export default function Header({ currentPage, onPageChange, isMenuOpen, setIsMen
       <div className="fixed top-4 right-4 z-50 md:hidden">
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`focus:outline-none p-2 rounded-md transition-colors duration-300 ${isMobileNavHidden ? 'text-orange-600' : 'text-gray-800'}`}
+          className={`focus:outline-none p-2 rounded-md transition-colors duration-300 
+            ${isFooterVisible ? 'text-white' : (isMobileNavHidden ? 'text-orange-600' : 'text-gray-800')}`}
         >
           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16m-7 6h7"}></path>
@@ -43,6 +44,7 @@ export default function Header({ currentPage, onPageChange, isMenuOpen, setIsMen
           {/* Logo Section */}
           <div className="flex-shrink-0">
             <button onClick={() => onPageChange('home')} className="flex flex-col items-start leading-none font-extrabold text-2xl md:text-3xl transition-transform duration-300 hover:scale-105 focus:outline-none">
+              {/* Reverted "CasualKrave" color to original design */}
               <span className="text-gray-900">CasualKrave</span>
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600 text-lg md:text-xl -mt-1 font-bold">Massage</span>
             </button>
