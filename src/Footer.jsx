@@ -42,15 +42,17 @@ export default function Footer() {
         </div>
       </div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-700 pt-8 text-center">
-        {/* The new "cheesy" developer credit */}
-        <p className="mb-2">
+        {/* Updated developer credit with new design */}
+        <p className="mb-2 text-white">
+          <span>Built by </span>
           <a
             href="https://github.com/real-SANtA" // You can change this to your actual GitHub profile
-            className="text-pink-400 hover:text-pink-200 transition-all duration-300 transform hover:scale-110 inline-block font-black text-sm uppercase tracking-widest"
+            className="font-black text-sm uppercase tracking-widest inline-block transform hover:scale-110 transition-all duration-300 animate-pulse
+                       bg-gradient-to-r from-red-400 via-red-500 to-red-600 text-transparent bg-clip-text"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Built by SANtA
+            SANtA
           </a>
         </p>
         <p className="text-gray-500 text-sm">&copy; {new Date().getFullYear()} CasualKrave Massage. All rights reserved.</p>
