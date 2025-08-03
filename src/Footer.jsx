@@ -47,8 +47,8 @@ export default function Footer() {
           <span>Built by </span>
           <a
             href="https://github.com/real-SANtA" // You can change this to your actual GitHub profile
-            className="font-black text-sm uppercase tracking-widest inline-block transform hover:scale-110 transition-all duration-300 animate-pulse
-                       bg-gradient-to-r from-red-400 via-red-500 to-red-600 text-transparent bg-clip-text"
+            className="font-black uppercase tracking-widest inline-block transform hover:scale-110 transition-all duration-300 animate-pulse
+                       bg-gradient-to-r from-red-400 via-red-500 to-red-600 text-transparent bg-clip-text text-[22px]"
             target="_blank"
             rel="noopener noreferrer"
           >
