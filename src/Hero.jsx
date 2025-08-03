@@ -6,8 +6,7 @@ import { ChevronLeft, ChevronRight, ChevronRight as ChevronRightIcon } from 'luc
 export default function Hero({ setIsModalOpen }) {
   // Array of local image paths for the carousel.
   const images = [
-    "/heroimg-i.jpeg",
-    "/heroimg-ii.jpeg"
+    "/heroimg-i.jpeg", "/heroimg-ii.jpeg"
   ];
   
   // State to track the current image index
